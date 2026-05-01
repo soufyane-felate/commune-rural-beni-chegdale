@@ -1,0 +1,85 @@
+:root {
+    --morocco-red: #c1272d;
+    --morocco-green: #006233;
+    --light-bg: #f8f9fa;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg);
+}
+
+.bg-primary {
+    background-color: var(--morocco-red) !important;
+}
+
+.text-primary {
+    color: var(--morocco-red) !important;
+}
+
+.btn-primary {
+    background-color: var(--morocco-red);
+    border-color: var(--morocco-red);
+}
+
+.btn-primary:hover {
+    background-color: #a01d22;
+    border-color: #a01d22;
+}
+
+.btn-outline-primary {
+    color: var(--morocco-red);
+    border-color: var(--morocco-red);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--morocco-red);
+    border-color: var(--morocco-red);
+}
+
+.bg-success {
+    background-color: var(--morocco-green) !important;
+}
+
+.text-success {
+    color: var(--morocco-green) !important;
+}
+
+.btn-success {
+    background-color: var(--morocco-green);
+    border-color: var(--morocco-green);
+}
+
+.btn-success:hover {
+    background-color: #004c27;
+    border-color: #004c27;
+}
+
+.btn-outline-success {
+    color: var(--morocco-green);
+    border-color: var(--morocco-green);
+}
+
+.btn-outline-success:hover {
+    background-color: var(--morocco-green);
+    border-color: var(--morocco-green);
+    color: white;
+}
+
+.border-primary {
+    border-color: var(--morocco-red) !important;
+}
+
+.border-success {
+    border-color: var(--morocco-green) !important;
+}
+
+.moroccan-card {
+    border-top: 4px solid var(--morocco-red);
+    border-bottom: 4px solid var(--morocco-green);
+}
+
+/* Optional subtle background pattern inspired by Zellige */
+.zellige-bg {
+    background-image: url('data:image/svg+xml,%3Csvg width=\"40\" height=\"40\" viewBox=\"0 0 40 40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M20 20.5V18H0v-2h20v-2H0v-2h20v-2H0V8h20V6H0V4h20V2H0V0h22v20h2V0h2v20h2V0h2v20h2V0h2v20h2V0h2v20h2v2H20v-1.5zM0 20h2v20H0V20zm4 0h2v20H4V20zm4 0h2v20H8V20zm4 0h2v20h-2V20zm4 0h2v20h-2V20zm4 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2z\" fill=\"%23006233\" fill-opacity=\"0.05\" fill-rule=\"evenodd\"/%3E%3C/svg%3E');
+}
