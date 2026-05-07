@@ -63,6 +63,11 @@ require_once $base_path . 'includes/navbar.php';
                             📝 Toutes les plaintes
                         </a>
                     </li>
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-dark" href="../rh/dashboard.php">
+                            👨‍💼 Ressources Humaines
+                        </a>
+                    </li>
                     <hr>
                     <li class="nav-item">
                         <a class="nav-link text-danger" href="../pages/logout.php">

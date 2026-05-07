@@ -33,38 +33,7 @@ require_once $base_path . 'includes/navbar.php';
 <div class="container-fluid mt-4 mb-5">
     <div class="row">
         <!-- Sidebar -->
-        <div class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse shadow-sm rounded-4 mb-4">
-            <div class="position-sticky pt-3 pb-3">
-                <ul class="nav flex-column nav-pills">
-                    <li class="nav-item mb-2">
-                        <a class="nav-link active" aria-current="page" href="dashboard.php">
-                            📊 Tableau de bord
-                        </a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a class="nav-link text-dark" href="employees.php">
-                            👥 Gestion des employés
-                        </a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a class="nav-link text-dark" href="departments.php">
-                            🏢 Départements
-                        </a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a class="nav-link text-dark" href="complaints.php">
-                            📝 Toutes les plaintes
-                        </a>
-                    </li>
-                    <hr>
-                    <li class="nav-item">
-                        <a class="nav-link text-danger" href="../pages/logout.php">
-                            🚪 Déconnexion
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        <?php require_once 'sidebar.php'; ?>
 
         <!-- Main content -->
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">

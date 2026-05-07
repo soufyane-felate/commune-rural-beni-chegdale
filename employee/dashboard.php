@@ -97,6 +97,13 @@ require_once $base_path . 'includes/navbar.php';
                         </a>
                     </li>
                     <?php endif; ?>
+                    <?php if (strtoupper($department_name) === 'LEGALISATION'): ?>
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-dark" href="legalisation_requests.php">
+                            <i class="fa-solid fa-stamp me-2"></i> Demandes Légalisation
+                        </a>
+                    </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>

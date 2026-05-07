@@ -12,14 +12,13 @@ require_once 'includes/navbar.php';
     <div class="p-5 mb-4 bg-white shadow-sm border-bottom border-success border-4">
         <div class="container-fluid py-5 text-center">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Coat_of_arms_of_Morocco.svg/1200px-Coat_of_arms_of_Morocco.svg.png" alt="Royaume du Maroc" style="height: 120px;" class="mb-4">
-            <h1 class="display-4 fw-bold text-success mb-3 text-uppercase">Commune Rurale Beni Chegdal</h1>
-            <h3 class="text-primary fw-bold mb-4">Province Fquih Ben Salah</h3>
+            <h1 class="display-4 fw-bold text-success mb-3 text-uppercase"><?php echo __('welcome'); ?></h1>
             <p class="col-md-8 mx-auto fs-5 text-dark mb-5">
-                Bienvenue sur le portail officiel de la commune. Accédez facilement à vos formulaires, soumettez vos requêtes (Chikayat) et restez informé des dernières actualités de votre région.
+                <?php echo __('welcome_sub'); ?>
             </p>
             <div class="d-flex justify-content-center gap-3">
-                <a href="citizen/home.php" class="btn btn-success btn-lg px-5 py-3 shadow-sm fw-bold">Espace Citoyen</a>
-                <a href="pages/login.php" class="btn btn-outline-primary btn-lg px-5 py-3 fw-bold">Se connecter</a>
+                <a href="citizen/home.php" class="btn btn-success btn-lg px-5 py-3 shadow-sm fw-bold"><?php echo __('citizen_services'); ?></a>
+                <a href="pages/login.php" class="btn btn-outline-primary btn-lg px-5 py-3 fw-bold"><?php echo __('login_portal'); ?></a>
             </div>
         </div>
     </div>
