@@ -47,14 +47,24 @@ require_once $base_path . 'includes/navbar.php';
 <div class="row">
     <?php require_once 'sidebar.php'; ?>
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-        <div class="pt-3 pb-2 mb-3 border-bottom d-flex justify-content-between align-items-center">
+        <div class="pt-3 pb-2 mb-3 border-bottom d-flex justify-content-between flex-wrap align-items-center">
             <h1 class="h2"><i class="fa-solid fa-address-card text-primary me-2"></i>Dossier Administratif</h1>
-            <div>
-                <a href="edit_employee.php?id=<?php echo $id; ?>" class="btn btn-primary shadow-sm"><i class="fa-solid fa-pen me-1"></i>Modifier Profil</a>
-                <a href="employees.php" class="btn btn-outline-secondary shadow-sm"><i class="fa-solid fa-arrow-left me-1"></i>Retour</a>
+            <div class="btn-toolbar mb-2 mb-md-0">
+                <div class="btn-group me-2">
+                    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle shadow-sm" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-download me-1"></i> Exporter
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><button class="dropdown-item" onclick="generatePDF()"><i class="fa-solid fa-file-pdf text-danger me-2"></i> Exporter en PDF</button></li>
+                        <li><a class="dropdown-item" href="export_employee.php?id=<?php echo $id; ?>"><i class="fa-solid fa-file-excel text-success me-2"></i> Exporter en Excel (CSV)</a></li>
+                    </ul>
+                </div>
+                <a href="edit_employee.php?id=<?php echo $id; ?>" class="btn btn-sm btn-primary shadow-sm me-2"><i class="fa-solid fa-pen me-1"></i>Modifier Profil</a>
+                <a href="employees.php" class="btn btn-sm btn-outline-secondary shadow-sm"><i class="fa-solid fa-arrow-left me-1"></i>Retour</a>
             </div>
         </div>
 
+        <div id="printable-dossier" class="p-2">
         <div class="row g-4">
             <!-- Left Column: Personal Info -->
             <div class="col-md-4">
@@ -173,7 +183,33 @@ require_once $base_path . 'includes/navbar.php';
                 </div>
             </div>
         </div>
+        </div> <!-- End printable-dossier -->
     </main>
 </div>
 </div>
+
+<!-- html2pdf Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+function generatePDF() {
+    const element = document.getElementById('printable-dossier');
+    const opt = {
+      margin:       [0.5, 0.5, 0.5, 0.5],
+      filename:     'Dossier_Employe_<?php echo preg_replace("/[^a-zA-Z0-9]+/", "_", $emp['name']); ?>.pdf',
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2, useCORS: true },
+      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+    
+    // Temporarily hide buttons that shouldn't be in PDF
+    const downloadBtns = element.querySelectorAll('.btn-outline-primary');
+    downloadBtns.forEach(btn => btn.style.display = 'none');
+
+    html2pdf().set(opt).from(element).save().then(() => {
+        // Restore buttons
+        downloadBtns.forEach(btn => btn.style.display = 'inline-block');
+    });
+}
+</script>
+
 <?php require_once $base_path . 'includes/footer.php'; ?>

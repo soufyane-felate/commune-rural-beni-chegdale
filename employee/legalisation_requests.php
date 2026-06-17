@@ -83,6 +83,8 @@ require_once $base_path . 'includes/navbar.php';
                 <li class="nav-item mb-2"><a class="nav-link text-dark" href="civil_requests.php"><i class="fa-solid fa-file-signature me-2"></i>État Civil</a></li>
                 <?php endif; ?>
                 <li class="nav-item mb-2"><a class="nav-link active" href="legalisation_requests.php"><i class="fa-solid fa-stamp me-2"></i>Légalisation</a></li>
+                <hr>
+                <li class="nav-item mb-2"><a class="nav-link text-dark" href="leave_requests.php"><i class="fa-solid fa-calendar-minus me-2"></i>Mes Congés</a></li>
             </ul>
         </div>
     </div>

@@ -95,8 +95,13 @@ require_once $base_path . 'includes/navbar.php';
                             <td class="text-danger">-<?php echo number_format($s['deductions'], 2); ?></td>
                             <td class="text-success">+<?php echo number_format($s['bonuses'], 2); ?></td>
                             <td class="fw-bold"><?php echo number_format($s['net_salary'], 2); ?></td>
-                            <td><?php echo ($s['payment_status']=='paid') ? '<span class="badge bg-success">Payé</span>' : '<span class="badge bg-warning text-dark">En attente</span>'; ?></td>
-                            <td><?php if($s['payment_status']=='pending'): ?><a href="salary.php?pay=<?php echo $s['id']; ?>" class="btn btn-sm btn-success" onclick="return confirm('Marquer comme payé ?');"><i class="fa-solid fa-check"></i> Payer</a><?php else: ?>—<?php endif; ?></td>
+                            <td><?php echo ($s['payment_status']=='paid') ? '<span class="badge bg-success"><i class="fa-solid fa-check-circle me-1"></i>Payé</span>' : '<span class="badge bg-warning text-dark"><i class="fa-solid fa-clock me-1"></i>En attente</span>'; ?></td>
+                            <td class="text-nowrap">
+                                <a href="payslip.php?id=<?php echo $s['id']; ?>" class="btn btn-sm btn-outline-primary" title="Fiche de Paie"><i class="fa-solid fa-file-invoice-dollar"></i></a>
+                                <?php if($s['payment_status']=='pending'): ?>
+                                <a href="salary.php?pay=<?php echo $s['id']; ?>" class="btn btn-sm btn-success ms-1" onclick="return confirm('Marquer comme payé ?');" title="Payer"><i class="fa-solid fa-check"></i></a>
+                                <?php endif; ?>
+                            </td>
                         </tr>
                         <?php endwhile; else: ?>
                         <tr><td colspan="8" class="text-center py-4 text-muted">Aucune fiche de salaire.</td></tr>

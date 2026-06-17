@@ -122,6 +122,12 @@ require_once $base_path . 'includes/navbar.php';
                             <i class="fa-solid fa-file-signature me-2"></i> Demandes État Civil
                         </a>
                     </li>
+                    <hr>
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-dark" href="leave_requests.php">
+                            <i class="fa-solid fa-calendar-minus me-2"></i> Mes Congés
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

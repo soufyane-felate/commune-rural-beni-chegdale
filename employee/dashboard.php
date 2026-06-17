@@ -104,6 +104,12 @@ require_once $base_path . 'includes/navbar.php';
                         </a>
                     </li>
                     <?php endif; ?>
+                    <hr>
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-dark" href="leave_requests.php">
+                            <i class="fa-solid fa-calendar-minus me-2"></i> Mes Congés
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -114,6 +120,11 @@ require_once $base_path . 'includes/navbar.php';
                 <div>
                     <h2 class="fw-bold text-primary">Espace Employé</h2>
                     <h5 class="text-muted">Département : <span class="badge bg-info text-dark"><?php echo htmlspecialchars($department_name); ?></span></h5>
+                </div>
+                <div>
+                    <a href="leave_requests.php" class="btn btn-primary fw-bold shadow-sm">
+                        <i class="fa-solid fa-calendar-plus me-2"></i>Demander un congé
+                    </a>
                 </div>
             </div>
 

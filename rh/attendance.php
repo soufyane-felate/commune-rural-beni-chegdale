@@ -14,7 +14,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['check_in'])) {
     $check->execute();
     if ($check->get_result()->num_rows == 0) {
         $now = date('Y-m-d H:i:s');
-        $status = (date('H:i') > '09:00') ? 'late' : 'present';
+        $check_time = strtotime(date('H:i', strtotime($now)));
+        $shift_start = strtotime('09:00');
+        $status = ($check_time > $shift_start) ? 'late' : 'present';
         $s = $conn->prepare("INSERT INTO employee_attendance (user_id, check_in, date, status) VALUES (?, ?, ?, ?)");
         $s->bind_param("isss", $user_id, $now, $today, $status);
         $s->execute();
@@ -123,12 +125,20 @@ require_once $base_path . 'includes/navbar.php';
                             <?php if($is_admin): ?><td><span class="badge bg-info text-dark"><?php echo htmlspecialchars($a['dept'] ?? '—'); ?></span></td><?php endif; ?>
                             <td><?php echo date('d/m/Y', strtotime($a['date'])); ?></td>
                             <td><?php echo $a['check_in'] ? date('H:i', strtotime($a['check_in'])) : '—'; ?></td>
-                            <td><?php echo $a['check_out'] ? date('H:i', strtotime($a['check_out'])) : '<span class="text-warning">En cours</span>'; ?></td>
+                            <td><?php echo $a['check_out'] ? date('H:i', strtotime($a['check_out'])) : '<span class="text-warning"><i class="fa-solid fa-spinner fa-spin me-1"></i>En cours</span>'; ?></td>
                             <td><?php
-                                if($a['status']=='present') echo '<span class="badge bg-success">Présent</span>';
-                                elseif($a['status']=='late') echo '<span class="badge bg-warning text-dark">Retard</span>';
-                                elseif($a['status']=='absent') echo '<span class="badge bg-danger">Absent</span>';
-                                elseif($a['status']=='leave') echo '<span class="badge bg-info">Congé</span>';
+                                if($a['status']=='present') {
+                                    echo '<span class="badge bg-success"><i class="fa-solid fa-check me-1"></i>Présent</span>';
+                                } elseif($a['status']=='late') {
+                                    $check_in_time = strtotime(date('H:i', strtotime($a['check_in'])));
+                                    $shift_start = strtotime('09:00');
+                                    $lateness_min = round(($check_in_time - $shift_start) / 60);
+                                    echo '<span class="badge bg-warning text-dark"><i class="fa-solid fa-clock me-1"></i>Retard ('.$lateness_min.' min)</span>';
+                                } elseif($a['status']=='absent') {
+                                    echo '<span class="badge bg-danger"><i class="fa-solid fa-xmark me-1"></i>Absent</span>';
+                                } elseif($a['status']=='leave') {
+                                    echo '<span class="badge bg-info text-dark"><i class="fa-solid fa-calendar-minus me-1"></i>Congé</span>';
+                                }
                             ?></td>
                         </tr>
                         <?php endwhile; else: ?>
